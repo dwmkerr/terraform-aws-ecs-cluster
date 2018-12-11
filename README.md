@@ -1,8 +1,10 @@
 # terraform-aws-ecs-cluster
 
+[![Terraform module](https://img.shields.io/badge/dynamic/json.svg?label=Terraform%20module&url=https%3A%2F%2Fregistry.terraform.io%2Fv1%2Fmodules%2Fdwmkerr%2Fecs-cluster%2Faws&query=%24.version&colorB=%235D54E1)](https://registry.terraform.io/modules/dwmkerr/ecs-cluster/aws)
+
 Build an Amazon Elastic Container Services Cluster with Terraform.
 
-![Architecture Diagram](./docs/architecture.png)
+![Architecture Diagram](docs/architecture.png)
 
 ## Introduction
 
@@ -26,7 +28,7 @@ provider "aws" {
 
 //  Create the ECS cluster using our module.
 module "ecs_cluster" {
-  source           = "github.com/dwmkerr/terraform-aws-ecs-cluster"
+  source           = "dwmkerr/ecs-cluster/aws"
   region           = "us-east-1"
   instance_size    = "t2.small"
   vpc_cidr         = "10.0.0.0/16"
@@ -44,8 +46,8 @@ module "ecs_cluster" {
 
 This will create an ECS cluster, made up of a set of three nodes in an auto-scaling group across the three availability zones specified. The screenshot below shows this cluster with a single service running in it:
 
-![Screenshot](./docs/ecs-screenshot.png)
+![Screenshot](docs/ecs-screenshot.png)
 
 More detailed examples are in the `[./examples](./examples)` directory. The basic example also shows how to add a Task, Service and Application Load Balancer Target Group to the service.
 
-You can see the documentation for each of the variables on the [Module Variables](TODO) page. The [Module Outputs](TODO) are also documented there.
+You can see the documentation for each of the variables on the [Module Inputs](https://registry.terraform.io/modules/dwmkerr/ecs-cluster/aws/?tab=inputs) page. The [Module Outputs](https://registry.terraform.io/modules/dwmkerr/ecs-cluster/aws/?tab=outputs) are also documented.
