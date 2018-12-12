@@ -24,6 +24,7 @@ resource "aws_internet_gateway" "ecs_cluster" {
 //  Define each of the required subnets.
 resource "aws_subnet" "public_subnet" {
   count                   = "${length(var.subnets)}"
+
   vpc_id                  = "${aws_vpc.ecs_cluster.id}"
   cidr_block              = "${element(values(var.subnets), count.index)}"
   map_public_ip_on_launch = true
@@ -57,6 +58,7 @@ resource "aws_route_table" "public_routes" {
 //  all public subnet instances access to the internet.
 resource "aws_route_table_association" "public_subnet_routes" {
   count = "${length(var.subnets)}"
+
   subnet_id      = "${element(aws_subnet.public_subnet.*.id, count.index)}"
   route_table_id = "${aws_route_table.public_routes.id}"
 }
