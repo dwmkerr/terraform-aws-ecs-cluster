@@ -34,12 +34,16 @@ resource "aws_launch_configuration" "ecs_cluster_node" {
     create_before_destroy = true
   }
 
-  security_groups = [
-    "${aws_security_group.intra_node_communication.id}",
-    "${aws_security_group.public_ingress.id}",
-    "${aws_security_group.public_egress.id}",
-    "${aws_security_group.ssh_access.id}",
-  ]
+  security_groups = ["${concat(
+    list(
+      aws_security_group.intra_node_communication.id,
+      aws_security_group.public_ingress.id,
+      aws_security_group.public_egress.id,
+      aws_security_group.ssh_access.id
+    ),
+    var.instance_security_groups
+  )}"]
+
   associate_public_ip_address = "true"
   user_data                   = "${data.template_file.node_userdata.rendered}"
   key_name = "${aws_key_pair.keypair.key_name}"
