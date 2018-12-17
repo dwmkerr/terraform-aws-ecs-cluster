@@ -50,6 +50,12 @@ variable "ecs_cluster_name" {
   default = "ecs_cluster"
 }
 
+variable "instance_security_groups" {
+  description = "Additional security groups for ECS instances"
+  type = "list"
+  default = []
+}
+
 variable "tags" {
   description = "Additional tags to add to resources"
   type = "map"
