@@ -48,6 +48,6 @@ This will create an ECS cluster, made up of a set of three nodes in an auto-scal
 
 ![Screenshot](docs/ecs-screenshot.png)
 
-More detailed examples are in the `[./examples](./examples)` directory. The basic example also shows how to add a Task, Service and Application Load Balancer Target Group to the service.
+More detailed examples are in the [`./examples`](./examples) directory. The basic example also shows how to add a Task, Service and Application Load Balancer Target Group to the service.
 
 You can see the documentation for each of the variables on the [Module Inputs](https://registry.terraform.io/modules/dwmkerr/ecs-cluster/aws/?tab=inputs) page. The [Module Outputs](https://registry.terraform.io/modules/dwmkerr/ecs-cluster/aws/?tab=outputs) are also documented.
